@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kili-Style Market demo storefront for shopping in Kenya.">
+<meta name="theme-color" content="#f36b21">
+<title>Kili-Style Market | Online Shopping Kenya</title>
+<style>
+:root{--orange:#f36b21;--dark:#20242b;--text:#252c36;--muted:#687382;--bg:#f5f6f8;--line:#e5e8ed}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+button,input{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+.topbar{background:var(--dark);color:#fff;padding:10px 4%;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px}
+header{background:#fff;border-bottom:1px solid var(--line)}.header-main{max-width:1450px;margin:auto;padding:17px 4%;display:grid;grid-template-columns:220px minmax(180px,1fr) auto;gap:18px;align-items:center}
+.brand{font-size:26px;font-weight:900;letter-spacing:-.8px}.brand span{color:var(--orange)}.tagline{margin:5px 0 0 34px;color:var(--muted);font-size:11px}
+.search{display:flex;border:1px solid #d6dbe2;border-radius:7px;overflow:hidden}.search input{min-width:0;width:100%;padding:13px;border:0;outline:none}.search button,.btn{border:0;background:var(--orange);color:#fff;font-weight:bold;padding:12px 16px}.search button:hover,.btn:hover{background:#d95410}
+.actions{display:flex;gap:12px;align-items:center}.actions button{background:transparent;border:0;font-size:12px;white-space:nowrap}.badge{background:var(--orange);color:white;padding:3px 7px;border-radius:20px}
+nav{background:white;border-top:1px solid #eee;overflow:auto}.nav-inner{max-width:1450px;margin:auto;padding:11px 4%;display:flex;gap:24px;white-space:nowrap;font-size:13px}.nav-inner a:hover{color:var(--orange)}
+main{max-width:1450px;margin:20px auto;padding:0 16px}.layout{display:grid;grid-template-columns:210px minmax(0,1fr) 210px;gap:15px}.panel{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.category-title{background:var(--orange);color:white;padding:14px;font-weight:bold}.category{display:block;width:100%;text-align:left;padding:12px;border:0;background:#fff;font-size:13px}.category:hover,.category.active{background:#fff0e8;color:#d95410}
+.hero{min-height:260px;border-radius:8px;padding:28px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:15px;background:linear-gradient(110deg,#101720,#39495b);overflow:hidden}.hero-copy{max-width:500px}.hero h1{font-size:clamp(28px,3vw,43px);line-height:1.1;margin:0 0 12px}.hero h1 span{color:#ff9a5d}.hero p{line-height:1.6;color:#e6eaf0}.hero-icons{font-size:clamp(32px,5vw,60px)}
+.quick{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:15px 0 22px}.quick button{background:white;border:1px solid var(--line);border-radius:8px;padding:12px 4px;font-size:12px}.quick span{display:block;font-size:25px;margin-bottom:7px}
+.section-heading{display:flex;justify-content:space-between;align-items:center;margin:14px 0}.section-heading h2{font-size:20px;margin:0}.section-heading button{border:0;background:none;color:#d95410;font-weight:bold}
+.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.product{background:white;border:1px solid var(--line);border-radius:8px;padding:10px;min-width:0;display:flex;flex-direction:column}.product-image{height:120px;border-radius:6px;background:linear-gradient(135deg,#f8f9fb,#e9edf2);display:grid;place-items:center;font-size:52px;position:relative}.discount{position:absolute;right:6px;top:6px;background:#e52626;color:white;border-radius:4px;padding:4px;font-size:10px}.product h3{font-size:13px;line-height:1.4;min-height:35px;margin:10px 0 4px}.description{font-size:11px;color:var(--muted);line-height:1.5}.price{font-size:15px;font-weight:bold;color:#d95410}.old{font-size:10px;color:#999;text-decoration:line-through;font-weight:normal}.rating{font-size:11px;color:#ef8b00;margin:5px 0 10px}.product .btn{width:100%;font-size:11px;padding:10px 4px;margin-top:auto}.wish{background:#fff;border:0;color:#d95410;padding:9px 4px;font-size:11px}.empty{grid-column:1/-1;background:white;text-align:center;padding:30px;border-radius:8px}
+.right-panel{display:flex;flex-direction:column;gap:12px}.sale{background:linear-gradient(135deg,#ff405b,#ff9b00);color:white;padding:18px;border-radius:8px}.sale h3{font-size:23px;margin:0}.info{background:white;border:1px solid var(--line);border-radius:8px;padding:15px}.info h3{font-size:14px;margin:0 0 10px}.info p{font-size:12px;color:var(--muted);line-height:1.55}.info a{color:#d95410;font-weight:bold;overflow-wrap:anywhere}.brands{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.brands span{background:#f5f6f8;padding:9px 4px;text-align:center;font-size:11px;font-weight:bold}
+footer{background:var(--dark);color:white;margin-top:28px;padding:28px 4% 15px}.footer-grid{max-width:1450px;margin:auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.footer-grid h3{font-size:14px}.footer-grid p,.footer-grid a{display:block;color:#c8ced7;font-size:12px;line-height:1.9;overflow-wrap:anywhere}.footer-grid a:hover{color:#ff9a5d}.copyright{max-width:1450px;margin:18px auto 0;border-top:1px solid #39414c;padding-top:14px;font-size:11px;color:#c8ced7}
+.modal-bg{display:none;position:fixed;inset:0;background:#0008;z-index:100;align-items:center;justify-content:center;padding:16px}.modal{background:white;border-radius:10px;padding:22px;width:100%;max-width:440px;max-height:85vh;overflow:auto}.modal h2{margin-top:0}.modal p{font-size:13px;line-height:1.6}.secondary{border:1px solid var(--line);background:white;padding:10px 14px;margin-left:6px}
+@media(max-width:1080px){.layout{grid-template-columns:190px minmax(0,1fr)}.right-panel{display:none}.products{grid-template-columns:repeat(3,minmax(0,1fr))}.header-main{grid-template-columns:190px minmax(0,1fr)}.actions{grid-column:1/-1;justify-content:flex-end}}
+@media(max-width:650px){.header-main{grid-template-columns:1fr}.actions{grid-column:auto;justify-content:space-between}.layout{display:block}.left-panel{display:none}.hero{min-height:220px;padding:20px}.hero h1{font-size:28px}.hero-icons{font-size:30px}.quick{grid-template-columns:repeat(3,minmax(0,1fr))}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.product{padding:8px}.product-image{height:100px;font-size:43px}.footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div class="topbar"><span>📍 Shopping in Kenya</span><span>🚚 Check delivery terms before ordering</span><span>🔒 Demo storefront</span><span>🇰🇪 Currency: KSh</span></div>
+<header>
+  <div class="header-main">
+    <div><div class="brand"><span>▣</span> KILI-STYLE</div><div class="tagline">Shop Smart. Save More.</div></div>
+    <form class="search" id="searchForm"><input id="searchInput" type="search" placeholder="Search products, brands and categories..." aria-label="Search products"><button type="submit" aria-label="Search">⌕</button></form>
+    <div class="actions"><button onclick="showAccount()">♙ Account</button><button onclick="showWishlist()">♡ Wishlist <span id="wishlistCount">0</span></button><button onclick="showCart()">🛒 Cart <span class="badge" id="cartCount">0</span></button></div>
+  </div>
+  <nav><div class="nav-inner"><a href="#products">All products</a><a href="#products" onclick="filterCategory('Phones')">Phones & tablets</a><a href="#products" onclick="filterCategory('Computers')">Computers</a><a href="#products" onclick="filterCategory('Electronics')">Electronics</a><a href="#products" onclick="filterCategory('Fashion')">Fashion</a><a href="#products" onclick="filterCategory('Home')">Home & kitchen</a><a href="#customer-support">Customer support</a></div></nav>
+</header>
+<main><div class="layout">
+  <aside class="left-panel panel"><div class="category-title">☰ &nbsp; All Categories</div><div id="categories">
+    <button class="category active" data-category="All">✨ All products</button><button class="category" data-category="Phones">📱 Phones & tablets</button><button class="category" data-category="Computers">💻 Computers</button><button class="category" data-category="Electronics">🎧 Electronics</button><button class="category" data-category="Home">🍳 Home & kitchen</button><button class="category" data-category="Fashion">👕 Fashion & clothing</button><button class="category" data-category="Shoes">👟 Shoes & bags</button><button class="category" data-category="Beauty">🧴 Beauty & personal care</button><button class="category" data-category="Sports">⚽ Sports & outdoors</button><button class="category" data-category="Auto">🚗 Automotive</button><button class="category" data-category="Books">📚 Books & stationery</button>
+  </div></aside>
+  <section>
+    <div class="hero"><div class="hero-copy"><h1>Great finds. <span>Everyday value.</span></h1><p>Explore sample listings for phones, laptops, electronics, fashion, home products and more.</p><button class="btn" onclick="scrollToProducts()">Shop products →</button></div><div class="hero-icons" aria-hidden="true">📱 💻 🎧 ⌚</div></div>
+    <div class="quick"><button onclick="filterCategory('Phones')"><span>📱</span>Phones</button><button onclick="filterCategory('Computers')"><span>💻</span>Laptops</button><button onclick="filterCategory('Electronics')"><span>🎧</span>Electronics</button><button onclick="filterCategory('Fashion')"><span>👕</span>Fashion</button><button onclick="filterCategory('Shoes')"><span>👟</span>Shoes</button><button onclick="filterCategory('Home')"><span>🍳</span>Home</button></div>
+    <div class="section-heading" id="products"><h2>🔥 Featured Products</h2><button onclick="filterCategory('All')">View all →</button></div><div class="products" id="productGrid" aria-live="polite"></div>
+  </section>
+  <aside class="right-panel">
+    <div class="sale"><h3>⚡ Featured Deals</h3><p>Browse demo product offers and sample prices in Kenyan shillings.</p><button class="btn" onclick="showNotice('Featured deals','These are sample listings. Replace them with verified products and prices before launch.')">Explore deals</button></div>
+    <div class="info"><h3>🚚 Delivery Information</h3><p>Delivery fees and timing depend on the seller and destination. Confirm terms before placing a real order.</p></div>
+    <!-- CUSTOMER SUPPORT CONTACTS -->
+    <div class="info" id="customer-support">
+      <h3>☎ Customer Support</h3>
+      <p>Have a question about a product or order? Contact our support team.</p>
+      <p>📧 <strong>Email:</strong><br><a href="mailto:kilimallseller@gmail.com">kilimallseller@gmail.com</a></p>
+      <p>📱 <strong>Mobile:</strong><br><a href="tel:0116846519">0116846519</a></p>
+      <p>🇰🇪 Country: Kenya</p>
+    </div>
+    <div class="info"><h3>Popular Labels</h3><div class="brands"><span>Samsung</span><span>Tecno</span><span>Infinix</span><span>HP</span><span>Xiaomi</span><span>Oraimo</span><span>Huawei</span><span>Adidas</span></div></div>
+  </aside>
+</div></main>
+<footer><div class="footer-grid">
+  <div><div class="brand"><span>▣</span> KILI-STYLE</div><p>Shop Smart. Save More.</p><p>Independent demo storefront; not affiliated with Kilimall.</p></div>
+  <div><h3>Customer Service</h3><p>📧 Email: <a href="mailto:kilimallseller@gmail.com">kilimallseller@gmail.com</a></p><p>📱 Mobile: <a href="tel:0116846519">0116846519</a></p><a href="#customer-support">Contact support</a><a href="#" onclick="showNotice('Returns and refunds','Publish a clear and accurate returns policy before accepting orders.');return false;">Returns & refunds</a></div>
+  <div><h3>Quick Links</h3><a href="#products">Browse products</a><a href="#" onclick="showCart();return false;">Shopping cart</a><a href="#" onclick="showWishlist();return false;">Wishlist</a><a href="#" onclick="showNotice('Privacy policy','Add a privacy policy before collecting customer information.');return false;">Privacy policy</a></div>
+  <div><h3>Shop Information</h3><p>Prices are displayed in Kenyan shillings (KSh).</p><p>This front-end demo does not accept payments or save real orders.</p></div>
+</div><div class="copyright">© <span id="year"></span> Kili-Style Market. Demo storefront.</div></footer>
+<div class="modal-bg" id="modalBg"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><h2 id="modalTitle">Notice</h2><div id="modalContent"></div><button class="btn" id="modalAction">Close</button><button class="secondary" id="modalClose">Cancel</button></div></div>
+<script>
+const products=[
+{id:1,name:"Android Smartphone",category:"Phones",description:"Large display and dual SIM",price:16999,oldPrice:19999,icon:"📱",discount:"-15%",reviews:124},
+{id:2,name:"Student Laptop",category:"Computers",description:"For school, office and browsing",price:34999,oldPrice:39999,icon:"💻",discount:"-12%",reviews:98},
+{id:3,name:"Wireless Earbuds",category:"Electronics",description:"Wireless audio with charging case",price:2499,oldPrice:3299,icon:"🎧",discount:"-24%",reviews:76},
+{id:4,name:"Everyday Sneakers",category:"Shoes",description:"Casual shoes; check available sizes",price:3999,oldPrice:5000,icon:"👟",discount:"-20%",reviews:52},
+{id:5,name:"Smart Watch",category:"Electronics",description:"Activity tracking and notifications",price:1999,oldPrice:2700,icon:"⌚",discount:"-26%",reviews:41},
+{id:6,name:"Air Fryer",category:"Home",description:"Kitchen appliance; check warranty",price:8999,oldPrice:11500,icon:"🍟",discount:"-22%",reviews:37},
+{id:7,name:"Everyday Backpack",category:"Fashion",description:"Backpack for school or travel",price:1899,oldPrice:2400,icon:"🎒",discount:"-21%",reviews:33},
+{id:8,name:"Skincare Set",category:"Beauty",description:"Personal care; check ingredients",price:1299,oldPrice:1600,icon:"🧴",discount:"-19%",reviews:29},
+{id:9,name:"Football",category:"Sports",description:"Recreational football",price:1499,oldPrice:1900,icon:"⚽",discount:"-21%",reviews:21},
+{id:10,name:"Cotton T-shirt",category:"Fashion",description:"Casual wear; confirm sizes and colours",price:799,oldPrice:1000,icon:"👕",discount:"-20%",reviews:44},
+{id:11,name:"Tablet",category:"Phones",description:"Portable screen for learning",price:12999,oldPrice:14999,icon:"📲",discount:"-13%",reviews:27},
+{id:12,name:"Car Phone Holder",category:"Auto",description:"Dashboard phone accessory",price:699,oldPrice:900,icon:"🚗",discount:"-22%",reviews:16},
+{id:13,name:"Notebook Set",category:"Books",description:"Stationery for school and office",price:499,oldPrice:650,icon:"📚",discount:"-23%",reviews:12},
+{id:14,name:"Kitchen Storage Set",category:"Home",description:"Reusable household storage",price:899,oldPrice:1200,icon:"🥣",discount:"-25%",reviews:18}
+];
+let currentCategory="All",cart=[],wishlist=[];
+const money=n=>"KSh "+n.toLocaleString("en-KE");
+function renderProducts(){
+ const query=document.getElementById("searchInput").value.toLowerCase().trim();
+ const filtered=products.filter(p=>(currentCategory==="All"||p.category===currentCategory)&&`${p.name} ${p.category} ${p.description}`.toLowerCase().includes(query));
+ const grid=document.getElementById("productGrid");
+ if(!filtered.length){grid.innerHTML='<div class="empty">No matching products found. Try another search or category.</div>';return;}
+ grid.innerHTML=filtered.map(p=>`<article class="product"><div class="product-image" aria-label="${p.name}">${p.icon}<span class="discount">${p.discount}</span></div><h3>${p.name}</h3><div class="description">${p.description}</div><p class="price">${money(p.price)} <span class="old">${money(p.oldPrice)}</span></p><div class="rating">★★★★☆ <span style="color:#687382">(${p.reviews} sample reviews)</span></div><button class="btn" onclick="addToCart(${p.id})">Add to Cart</button><button class="wish" onclick="toggleWishlist(${p.id})">♡ Add/remove Wishlist</button></article>`).join("");
+}
+function filterCategory(category){currentCategory=category;document.querySelectorAll("[data-category]").forEach(b=>b.classList.toggle("active",b.dataset.category===category));renderProducts();document.getElementById("products").scrollIntoView({behavior:"smooth",block:"start"});}
+document.getElementById("categories").addEventListener("click",e=>{const b=e.target.closest("[data-category]");if(b)filterCategory(b.dataset.category);});
+document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();renderProducts();});
+document.getElementById("searchInput").addEventListener("input",renderProducts);
+function addToCart(id){cart.push(id);document.getElementById("cartCount").textContent=cart.length;showNotice("Added to Cart",products.find(p=>p.id===id).name+" was added to this demo cart.");}
+function showCart(){
+ if(!cart.length){showNotice("Shopping Cart","Your cart is empty. Add a product to begin.");return;}
+ const quantities={};cart.forEach(id=>quantities[id]=(quantities[id]||0)+1);let total=0;
+ const rows=Object.entries(quantities).map(([id,q])=>{const p=products.find(x=>x.id===Number(id)),sub=p.price*q;total+=sub;return `<p>${p.icon} ${p.name} × ${q} — <strong>${money(sub)}</strong></p>`;}).join("");
+ openModal("Your Shopping Cart",rows+`<hr><p><strong>Total: ${money(total)}</strong></p><p>Demo only: no order is placed and no payment is processed.</p>`,"Clear Cart",()=>{cart=[];document.getElementById("cartCount").textContent="0";closeModal();});
+}
+function toggleWishlist(id){wishlist=wishlist.includes(id)?wishlist.filter(x=>x!==id):[...wishlist,id];document.getElementById("wishlistCount").textContent=wishlist.length;renderProducts();}
+function showWishlist(){const saved=wishlist.map(id=>products.find(p=>p.id===id));openModal("Your Wishlist",saved.length?saved.map(p=>`<p>${p.icon} ${p.name} — ${money(p.price)}</p>`).join(""):"<p>Your wishlist is empty.</p>");}
+function showAccount(){showNotice("Customer Account","Secure registration and login need a backend service. This demo does not collect passwords or personal data.");}
+function openModal(title,content,actionText="Close",action=closeModal){document.getElementById("modalTitle").textContent=title;document.getElementById("modalContent").innerHTML=content;document.getElementById("modalAction").textContent=actionText;document.getElementById("modalAction").onclick=action;document.getElementById("modalClose").onclick=closeModal;document.getElementById("modalBg").style.display="flex";}
+function closeModal(){document.getElementById("modalBg").style.display="none";}
+function showNotice(title,message){openModal(title,`<p>${message}</p>`);}
+document.getElementById("modalBg").addEventListener("click",e=>{if(e.target.id==="modalBg")closeModal();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+function scrollToProducts(){document.getElementById("products").scrollIntoView({behavior:"smooth"});}
+document.getElementById("year").textContent=new Date().getFullYear();renderProducts();
+</script>
+</body>
+</html>
